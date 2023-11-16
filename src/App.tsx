@@ -1,11 +1,18 @@
-import Button from "./components/Button";
+import Button from "./components/Button/Button";
+import Alert from "./components/Alert";
+import Like from "./components/Like/Like";
+import { useState } from "react";
 
 function App() {
+  const [activeButton, setactiveButton] = useState(false);
+  const changeActiveButton = (param: boolean) => {
+    setactiveButton(param);
+  };
   return (
     <div>
-      <Button onclick={() => console.log("onclick")} color="primary">
-        Click Me
-      </Button>
+      {activeButton && <Alert onClose={changeActiveButton}></Alert>}
+      <Button color="danger" onClick={changeActiveButton}></Button>
+      <Like />
     </div>
   );
 }
