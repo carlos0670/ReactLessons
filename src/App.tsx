@@ -1,48 +1,18 @@
-import ListGroup from "./components/ListGroup";
-
-const cities = [
-  "New York",
-  "San Francisco",
-  "Tokyo",
-  "Paris",
-  "Barcelona",
-  "Porto",
-];
-const colors = [
-  "Red",
-  "Blue",
-  "Green",
-  "Yellow",
-  "Orange",
-  "Purple",
-  "Pink",
-  "Brown",
-  "Black",
-  "White",
-  "Gray",
-  "Silver",
-  "Gold",
-  "Cyan",
-  "Magenta",
-  "Turquoise",
-  "Indigo",
-  "Lavender",
-  "Olive",
-  "Maroon",
-];
-
-const hundleShowValue = (item: string) => {
-  console.log(item);
-};
+import Button from "./components/Button/Button";
+import Alert from "./components/Alert";
+import Like from "./components/Like/Like";
+import { useState } from "react";
 
 function App() {
+  const [activeButton, setactiveButton] = useState(false);
+  const changeActiveButton = (param: boolean) => {
+    setactiveButton(param);
+  };
   return (
     <div>
-      <ListGroup
-        items={cities}
-        heading="Cities"
-        onShowValue={hundleShowValue}
-      />
+      {activeButton && <Alert onClose={changeActiveButton}></Alert>}
+      <Button color="danger" onClick={changeActiveButton}></Button>
+      <Like />
     </div>
   );
 }
